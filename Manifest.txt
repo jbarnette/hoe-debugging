@@ -1,8 +1,5 @@
-.autotest
 CHANGELOG.rdoc
 Manifest.txt
 README.rdoc
 Rakefile
-bin/hoe_debugging
-lib/hoe_debugging.rb
-test/test_hoe_debugging.rb
+lib/hoe/debugging.rb

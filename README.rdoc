@@ -1,6 +1,6 @@
-= hoe_debugging
+= hoe-debugging
 
-* http://github.com/jbarnette/hoe_debugging
+* http://github.com/jbarnette/hoe-debugging
 
 == Description
 
@@ -12,7 +12,7 @@ FIX (describe your package)
 
 == Installation
 
-    $ gem install hoe_debugging
+    $ gem install hoe-debugging
 
 == License
 
