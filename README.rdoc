@@ -4,11 +4,21 @@
 
 == Description
 
-FIX (describe your package)
+A Hoe plugin to help you debug your codes. This plugin provides
+<tt>test:gdb</tt> and <tt>test:valgrind</tt> tasks (with a few
+variants). See the Hoe::Debugging module for a few configuration
+options.
+
+This plugin expects you to have <tt>gdb</tt> and <tt>valgrind</tt>
+available in your <tt>PATH</tt>.
 
 == Examples
 
-  FIX (code sample of usage)
+    # in your Rakefile
+    Hoe.plugin :debugging
+
+    # in your shell
+    $ rake test:gdb
 
 == Installation
 
@@ -16,7 +26,8 @@ FIX (describe your package)
 
 == License
 
-Copyright 2009 John Barnette (jbarnette@rubyforge.org)
+Copyright 2009 John Barnette (jbarnette@rubyforge.org),
+Aaron Patterson (apatterson@rubyforge.org)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
