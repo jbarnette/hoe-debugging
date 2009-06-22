@@ -1,5 +1,3 @@
-$: << "lib"
-
 require "rubygems"
 require "hoe"
 
