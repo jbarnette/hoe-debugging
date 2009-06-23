@@ -13,6 +13,9 @@ See the Hoe::Debugging module for a few configuration options.
 This plugin expects you to have <tt>gdb</tt> and <tt>valgrind</tt>
 available in your <tt>PATH</tt>.
 
+These tasks were extracted from nokogiri / johnson and originally written by
+ruby legend, {Mike Dalessio}[http://mike.daless.io].
+
 == Examples
 
     # in your Rakefile
@@ -27,8 +30,11 @@ available in your <tt>PATH</tt>.
 
 == License
 
-Copyright 2009 John Barnette (jbarnette@rubyforge.org),
-Aaron Patterson (apatterson@rubyforge.org)
+Copyright 2009
+
+* John Barnette (jbarnette@rubyforge.org)
+* {Aaron Patterson}[http://tenderlovemaking.com/]
+* {Mike Dalessio}[http://mike.daless.io]
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
