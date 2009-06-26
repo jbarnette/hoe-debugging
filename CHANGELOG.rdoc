@@ -1,6 +1,9 @@
+=== 1.0.1 / 2009-06-26
+
+* Fix Hoe dependency version.
+* Activate the hoe-git plugin.
+* Fix docs, give Mike some well-deserved credit!
+
 === 1.0.0 / 2009-06-22
 
-* 1 major enhancement
-
-  * Birthday!
-
+* Birthday!
