@@ -10,5 +10,5 @@ Hoe.spec "hoe-debugging" do
   self.history_file     = "CHANGELOG.rdoc"
   self.readme_file      = "README.rdoc"
 
-  extra_deps << ["hoe", "~> 2.1.0"]
+  extra_deps << ["hoe", ">= 2.2.0"]
 end
