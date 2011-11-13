@@ -1,3 +1,7 @@
+=== 1.0.2 / 2011-11-13
+
+* Fixing reference to ::RUBY with rbconfig-based construction of the ruby interpreter path.
+
 === 1.0.1 / 2009-06-26
 
 * Fix Hoe dependency version.
