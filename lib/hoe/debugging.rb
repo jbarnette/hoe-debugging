@@ -10,7 +10,7 @@ class Hoe #:nodoc:
   # * <tt>test:valgrind:mem0</tt>
 
   module Debugging
-    VERSION = "1.0.2" #:nodoc:
+    VERSION = "1.0.3" #:nodoc:
 
     ##
     # Optional: Used to add flags to GDB. [default: <tt>[]</tt>]
@@ -33,7 +33,7 @@ class Hoe #:nodoc:
                                "--undef-value-errors=no"]
     end
 
-    def ruby
+    def hoe_debugging_ruby
       # http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/151376
       @ruby ||= File.join(Config::CONFIG["bindir"], (Config::CONFIG["RUBY_INSTALL_NAME"] + Config::CONFIG["EXEEXT"]))
     end
@@ -42,26 +42,26 @@ class Hoe #:nodoc:
       if File.directory? "test" then
         desc "Run the test suite under GDB."
         task "test:gdb" do
-          sh "gdb #{gdb_options.join ' '} --args #{ruby} #{make_test_cmd}"
+          sh "gdb #{gdb_options.join ' '} --args #{hoe_debugging_ruby} #{make_test_cmd}"
         end
 
         desc "Run the test suite under Valgrind."
         task "test:valgrind" do
-          sh "valgrind #{valgrind_options.join ' '} #{ruby} #{make_test_cmd}"
+          sh "valgrind #{valgrind_options.join ' '} #{hoe_debugging_ruby} #{make_test_cmd}"
         end
 
         desc "Run the test suite under Valgrind with memory-fill."
         task "test:valgrind:mem" do
           sh "valgrind #{valgrind_options.join ' '} " +
              "--freelist-vol=100000000 --malloc-fill=6D --free-fill=66 " +
-             "#{ruby} #{make_test_cmd}"
+             "#{hoe_debugging_ruby} #{make_test_cmd}"
         end
 
         desc "Run the test suite under Valgrind with memory-zero."
         task "test:valgrind:mem0" do
           sh "valgrind #{valgrind_options.join ' '} " +
              "--freelist-vol=100000000 --malloc-fill=00 --free-fill=00 " +
-             "#{ruby} #{make_test_cmd}"
+             "#{hoe_debugging_ruby} #{make_test_cmd}"
         end
       end
     end
