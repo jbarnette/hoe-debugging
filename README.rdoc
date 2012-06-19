@@ -2,10 +2,11 @@
 
 * http://github.com/jbarnette/hoe-debugging
 
+
 == Description
 
-A Hoe plugin to help you debug your codes. This plugin provides
-<tt>test:gdb</tt> and <tt>test:valgrind</tt> tasks (with a few
+A Hoe plugin to help you debug your C extensions. This plugin provides
+<tt>test:gdb</tt> and <tt>test:valgrind</tt> tasks (plus a few
 variants).
 
 See the Hoe::Debugging module for a few configuration options.
@@ -16,6 +17,7 @@ available in your <tt>PATH</tt>.
 These tasks were extracted from nokogiri / johnson and originally written by
 ruby legend, {Mike Dalessio}[http://mike.daless.io].
 
+
 == Examples
 
     # in your Rakefile
@@ -23,10 +25,13 @@ ruby legend, {Mike Dalessio}[http://mike.daless.io].
 
     # in your shell
     $ rake test:gdb
+    $ rake test:valgrind
+
 
 == Installation
 
     $ gem install hoe-debugging
+
 
 == License
 
