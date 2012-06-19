@@ -42,6 +42,7 @@ class Hoe #:nodoc:
       cmd = []
       if File.directory? "spec"
         cmd << "-S rspec"
+        cmd << (ENV['FILTER'] || ENV['TESTOPTS'])
       else
         cmd << make_test_cmd
       end
