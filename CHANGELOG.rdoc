@@ -1,3 +1,7 @@
+=== 1.0.5 / 2012-06-19
+
+* RSpec support now works with TESTOPTS.
+
 === 1.0.4 / 2012-06-19
 
 * Adding support for RSpec.

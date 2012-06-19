@@ -2,6 +2,7 @@ require "rubygems"
 require "hoe"
 
 Hoe.plugin :git
+Hoe.plugin :gemspec
 
 Hoe.spec "hoe-debugging" do
   developer "John Barnette", "jbarnette@rubyforge.org"
