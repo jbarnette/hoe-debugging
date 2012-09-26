@@ -57,6 +57,17 @@ class Hoe #:nodoc:
       sh "valgrind #{cmdline_options.join(' ')} #{command}"
     end
 
+    def hoe_debugging_check_for_suppression_file options
+      if suppression_file = hoe_debugging_valgrind_helper.matching_suppression_file
+        puts "NOTICE: using valgrind suppressions in #{suppression_file.inspect}"
+        options << "--suppressions=#{suppression_file}"
+      end
+    end
+
+    def hoe_debugging_valgrind_helper
+      @valgrind_helper ||= ValgrindHelper.new name
+    end
+
     def define_debugging_tasks #:nodoc:
       desc "Run the test suite under GDB."
       task "test:gdb" do
@@ -66,19 +77,31 @@ class Hoe #:nodoc:
       desc "Run the test suite under Valgrind."
       task "test:valgrind" do
         vopts = valgrind_options
+        hoe_debugging_check_for_suppression_file vopts
         hoe_debugging_run_valgrind hoe_debugging_command, vopts
       end
 
       desc "Run the test suite under Valgrind with memory-fill."
       task "test:valgrind:mem" do
         vopts = valgrind_options + ["--freelist-vol=100000000", "--malloc-fill=6D", "--free-fill=66"]
+        hoe_debugging_check_for_suppression_file vopts
         hoe_debugging_run_valgrind hoe_debugging_command, vopts
       end
 
       desc "Run the test suite under Valgrind with memory-zero."
       task "test:valgrind:mem0" do
         vopts = valgrind_options + ["--freelist-vol=100000000", "--malloc-fill=00", "--free-fill=00"]
+        hoe_debugging_check_for_suppression_file vopts
         hoe_debugging_run_valgrind hoe_debugging_command, vopts
+      end
+
+      desc "Generate a valgrind suppression file for your test suite."
+      task "test:valgrind:suppression" do
+        vopts = valgrind_options + ["--gen-suppressions=all"]
+        Tempfile.open "hoe_debugging_valgrind_suppression_log" do |logfile|
+          hoe_debugging_run_valgrind "#{hoe_debugging_ruby} #{hoe_debugging_make_test_cmd} 2> #{logfile.path}", vopts
+          hoe_debugging_valgrind_helper.save_suppressions_from logfile.path
+        end
       end
     end
 
