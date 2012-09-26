@@ -1,3 +1,8 @@
+=== 1.1.0 / 2012-09-26
+
+* Valgrind suppressions can be generated with `rake test:valgrind:suppression`
+* If present, valgrind suppressions will be used when valgrinding.
+
 === 1.0.5 / 2012-06-19
 
 * RSpec support now works with TESTOPTS.
