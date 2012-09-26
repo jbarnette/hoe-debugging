@@ -27,6 +27,10 @@ ruby legend, {Mike Dalessio}[http://mike.daless.io].
     $ rake test:gdb
     $ rake test:valgrind
 
+    # if you've got valgrind warnings you've deemed OK to suppress
+    $ rake test:valgrind:suppression
+    $ rake test:valgrind # this runs, suppressing the errors previously emitted by valgrind
+
 
 == Installation
 
@@ -35,11 +39,13 @@ ruby legend, {Mike Dalessio}[http://mike.daless.io].
 
 == License
 
+(The MIT License)
+
 Copyright 2009
 
 * John Barnette (jbarnette@rubyforge.org)
 * {Aaron Patterson}[http://tenderlovemaking.com/]
-* {Mike Dalessio}[http://mike.daless.io]
+* {Mike Dalessio}[http://mike.daless.io] (mike.dalessio@gmail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
