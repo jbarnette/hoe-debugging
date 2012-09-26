@@ -1,0 +1,974 @@
+==26723== Memcheck, a memory error detector
+==26723== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
+==26723== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
+==26723== Command: /home/miked/.rvm/rubies/ruby-1.9.3-p194/bin/ruby -w -I.:lib:bin:test:. -e require\ "rubygems";\ require\ "minitest/autorun";\ require\ "test/html/test_named_characters.rb";\ require\ "test/html/sax/test_parser_context.rb";\ require\ "test/html/sax/test_parser.rb";\ require\ "test/html/test_node.rb";\ require\ "test/html/test_document_encoding.rb";\ require\ "test/html/test_document_fragment.rb";\ require\ "test/html/test_node_encoding.rb";\ require\ "test/html/test_builder.rb";\ require\ "test/html/test_document.rb";\ require\ "test/html/test_element_description.rb";\ require\ "test/test_soap4r_sax.rb";\ require\ "test/css/test_nthiness.rb";\ require\ "test/css/test_xpath_visitor.rb";\ require\ "test/css/test_parser.rb";\ require\ "test/css/test_tokenizer.rb";\ require\ "test/test_nokogiri.rb";\ require\ "test/xml/test_cdata.rb";\ require\ "test/xml/test_xpath.rb";\ require\ "test/xml/test_node_reparenting.rb";\ require\ "test/xml/test_syntax_error.rb";\ require\ "test/xml/test_parse_options.rb";\ require\ "test/xml/test_dtd.rb";\ require\ "test/xml/sax/test_push_parser.rb";\ require\ "test/xml/sax/test_parser_context.rb";\ require\ "test/xml/sax/test_parser.rb";\ require\ "test/xml/test_element_decl.rb";\ require\ "test/xml/test_node.rb";\ require\ "test/xml/test_document_encoding.rb";\ require\ "test/xml/test_reader_encoding.rb";\ require\ "test/xml/test_document_fragment.rb";\ require\ "test/xml/test_comment.rb";\ require\ "test/xml/test_node_inheritance.rb";\ require\ "test/xml/test_processing_instruction.rb";\ require\ "test/xml/test_schema.rb";\ require\ "test/xml/test_node_set.rb";\ require\ "test/xml/test_element_content.rb";\ require\ "test/xml/test_c14n.rb";\ require\ "test/xml/test_unparented_node.rb";\ require\ "test/xml/test_xinclude.rb";\ require\ "test/xml/test_entity_reference.rb";\ require\ "test/xml/test_node_encoding.rb";\ require\ "test/xml/test_attribute_decl.rb";\ require\ "test/xml/test_builder.rb";\ require\ "test/xml/test_text.rb";\ require\ "test/xml/node/test_save_options.rb";\ require\ "test/xml/node/test_subclass.rb";\ require\ "test/xml/test_document.rb";\ require\ "test/xml/test_node_attributes.rb";\ require\ "test/xml/test_attr.rb";\ require\ "test/xml/test_relax_ng.rb";\ require\ "test/xml/test_namespace.rb";\ require\ "test/xml/test_entity_decl.rb";\ require\ "test/xml/test_dtd_encoding.rb";\ require\ "test/decorators/test_slop.rb";\ require\ "test/test_convert_xpath.rb";\ require\ "test/test_memory_leak.rb";\ require\ "test/test_reader.rb";\ require\ "test/test_css_cache.rb";\ require\ "test/test_encoding_handler.rb";\ require\ "test/xslt/test_exception_handling.rb";\ require\ "test/xslt/test_custom_functions.rb";\ require\ "test/test_xslt_transforms.rb" --
+==26723== 
+==26723== Invalid read of size 4
+==26723==    at 0x4E861D3: glob_helper (dir.c:1139)
+==26723==    by 0x4E86B0B: ruby_glob0 (dir.c:1516)
+==26723==    by 0x4E87194: rb_push_glob (dir.c:1655)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9E3F5: vm_exec_core (insns.def:1899)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA8EB6: rb_yield (vm.c:654)
+==26723==    by 0x4E5DE41: rb_ary_each (array.c:1478)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F9AB91: rb_iterate (vm_eval.c:882)
+==26723==    by 0x4F9AD4C: rb_block_call (vm_eval.c:962)
+==26723==    by 0x4E89BBC: enum_find_all (enum.c:329)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F3EA1F: require_libraries (ruby.c:491)
+==26723==    by 0x4F41598: process_options (ruby.c:1392)
+==26723==    by 0x4F41F3F: ruby_process_options (ruby.c:1806)
+==26723==  Address 0x7d47ffc is 60 bytes inside a block of size 61 alloc'd
+==26723==    at 0x4C2B6CD: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==26723==    by 0x4E85F0F: glob_helper (dir.c:1445)
+==26723==    by 0x4E86B0B: ruby_glob0 (dir.c:1516)
+==26723==    by 0x4E87194: rb_push_glob (dir.c:1655)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9E3F5: vm_exec_core (insns.def:1899)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA8EB6: rb_yield (vm.c:654)
+==26723==    by 0x4E5DE41: rb_ary_each (array.c:1478)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F9AB91: rb_iterate (vm_eval.c:882)
+==26723==    by 0x4F9AD4C: rb_block_call (vm_eval.c:962)
+==26723==    by 0x4E89BBC: enum_find_all (enum.c:329)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F3EA1F: require_libraries (ruby.c:491)
+==26723==    by 0x4F41598: process_options (ruby.c:1392)
+==26723== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:glob_helper
+   fun:ruby_glob0
+   fun:rb_push_glob
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:rb_yield
+   fun:rb_ary_each
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:vm_call0
+   fun:rb_iterate
+   fun:rb_block_call
+   fun:enum_find_all
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:vm_call0
+   fun:rb_class_new_instance
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:vm_call0
+}
+==26723== Invalid read of size 4
+==26723==    at 0x4E85FCC: glob_helper (dir.c:1252)
+==26723==    by 0x4E86B0B: ruby_glob0 (dir.c:1516)
+==26723==    by 0x4E87194: rb_push_glob (dir.c:1655)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9E3F5: vm_exec_core (insns.def:1899)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA8EB6: rb_yield (vm.c:654)
+==26723==    by 0x4E5DE41: rb_ary_each (array.c:1478)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F9AB91: rb_iterate (vm_eval.c:882)
+==26723==    by 0x4F9AD4C: rb_block_call (vm_eval.c:962)
+==26723==    by 0x4E89BBC: enum_find_all (enum.c:329)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F3EA1F: require_libraries (ruby.c:491)
+==26723==    by 0x4F41598: process_options (ruby.c:1392)
+==26723==    by 0x4F41F3F: ruby_process_options (ruby.c:1806)
+==26723==  Address 0x7d47ffc is 60 bytes inside a block of size 61 alloc'd
+==26723==    at 0x4C2B6CD: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==26723==    by 0x4E85F0F: glob_helper (dir.c:1445)
+==26723==    by 0x4E86B0B: ruby_glob0 (dir.c:1516)
+==26723==    by 0x4E87194: rb_push_glob (dir.c:1655)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9E3F5: vm_exec_core (insns.def:1899)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA8EB6: rb_yield (vm.c:654)
+==26723==    by 0x4E5DE41: rb_ary_each (array.c:1478)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F9AB91: rb_iterate (vm_eval.c:882)
+==26723==    by 0x4F9AD4C: rb_block_call (vm_eval.c:962)
+==26723==    by 0x4E89BBC: enum_find_all (enum.c:329)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F3EA1F: require_libraries (ruby.c:491)
+==26723==    by 0x4F41598: process_options (ruby.c:1392)
+==26723== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:glob_helper
+   fun:ruby_glob0
+   fun:rb_push_glob
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:rb_yield
+   fun:rb_ary_each
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:vm_call0
+   fun:rb_iterate
+   fun:rb_block_call
+   fun:enum_find_all
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:vm_call0
+   fun:rb_class_new_instance
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:vm_call0
+}
+==26723== Invalid read of size 4
+==26723==    at 0x4E861E8: glob_helper (dir.c:1139)
+==26723==    by 0x4E86B0B: ruby_glob0 (dir.c:1516)
+==26723==    by 0x4E87194: rb_push_glob (dir.c:1655)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9E3F5: vm_exec_core (insns.def:1899)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA8EB6: rb_yield (vm.c:654)
+==26723==    by 0x4E5DE41: rb_ary_each (array.c:1478)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F9AB91: rb_iterate (vm_eval.c:882)
+==26723==    by 0x4F9AD4C: rb_block_call (vm_eval.c:962)
+==26723==    by 0x4E89BBC: enum_find_all (enum.c:329)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F3EA1F: require_libraries (ruby.c:491)
+==26723==    by 0x4F41598: process_options (ruby.c:1392)
+==26723==    by 0x4F41F3F: ruby_process_options (ruby.c:1806)
+==26723==  Address 0x82d56b8 is 56 bytes inside a block of size 59 alloc'd
+==26723==    at 0x4C2B6CD: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==26723==    by 0x4E85F0F: glob_helper (dir.c:1445)
+==26723==    by 0x4E86B0B: ruby_glob0 (dir.c:1516)
+==26723==    by 0x4E87194: rb_push_glob (dir.c:1655)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9E3F5: vm_exec_core (insns.def:1899)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA8EB6: rb_yield (vm.c:654)
+==26723==    by 0x4E5DE41: rb_ary_each (array.c:1478)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F9AB91: rb_iterate (vm_eval.c:882)
+==26723==    by 0x4F9AD4C: rb_block_call (vm_eval.c:962)
+==26723==    by 0x4E89BBC: enum_find_all (enum.c:329)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F3EA1F: require_libraries (ruby.c:491)
+==26723==    by 0x4F41598: process_options (ruby.c:1392)
+==26723== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:glob_helper
+   fun:ruby_glob0
+   fun:rb_push_glob
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:rb_yield
+   fun:rb_ary_each
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:vm_call0
+   fun:rb_iterate
+   fun:rb_block_call
+   fun:enum_find_all
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:vm_call0
+   fun:rb_class_new_instance
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:vm_call0
+}
+==26723== Invalid read of size 4
+==26723==    at 0x4E85FE1: glob_helper (dir.c:1252)
+==26723==    by 0x4E86B0B: ruby_glob0 (dir.c:1516)
+==26723==    by 0x4E87194: rb_push_glob (dir.c:1655)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9E3F5: vm_exec_core (insns.def:1899)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA8EB6: rb_yield (vm.c:654)
+==26723==    by 0x4E5DE41: rb_ary_each (array.c:1478)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F9AB91: rb_iterate (vm_eval.c:882)
+==26723==    by 0x4F9AD4C: rb_block_call (vm_eval.c:962)
+==26723==    by 0x4E89BBC: enum_find_all (enum.c:329)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F3EA1F: require_libraries (ruby.c:491)
+==26723==    by 0x4F41598: process_options (ruby.c:1392)
+==26723==    by 0x4F41F3F: ruby_process_options (ruby.c:1806)
+==26723==  Address 0x82d56b8 is 56 bytes inside a block of size 59 alloc'd
+==26723==    at 0x4C2B6CD: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==26723==    by 0x4E85F0F: glob_helper (dir.c:1445)
+==26723==    by 0x4E86B0B: ruby_glob0 (dir.c:1516)
+==26723==    by 0x4E87194: rb_push_glob (dir.c:1655)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9E3F5: vm_exec_core (insns.def:1899)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA8EB6: rb_yield (vm.c:654)
+==26723==    by 0x4E5DE41: rb_ary_each (array.c:1478)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F9AB91: rb_iterate (vm_eval.c:882)
+==26723==    by 0x4F9AD4C: rb_block_call (vm_eval.c:962)
+==26723==    by 0x4E89BBC: enum_find_all (enum.c:329)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F3EA1F: require_libraries (ruby.c:491)
+==26723==    by 0x4F41598: process_options (ruby.c:1392)
+==26723== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:glob_helper
+   fun:ruby_glob0
+   fun:rb_push_glob
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:rb_yield
+   fun:rb_ary_each
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:vm_call0
+   fun:rb_iterate
+   fun:rb_block_call
+   fun:enum_find_all
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:vm_call0
+   fun:rb_class_new_instance
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:vm_call0
+}
+/home/miked/.rvm/gems/ruby-1.9.3-p194@nokogiri/gems/bundler-1.2.1/lib/bundler/definition.rb:233: warning: assigned but unused variable - e
+/home/miked/.rvm/gems/ruby-1.9.3-p194@nokogiri/gems/bundler-1.2.1/lib/bundler/source.rb:516: warning: method redefined; discarding old revision
+==26723== Invalid read of size 4
+==26723==    at 0x4E861E8: glob_helper (dir.c:1139)
+==26723==    by 0x4E86B0B: ruby_glob0 (dir.c:1516)
+==26723==    by 0x4E86EA6: ruby_brace_expand.constprop.7 (dir.c:1620)
+==26723==    by 0x4E87194: rb_push_glob (dir.c:1655)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9E3F5: vm_exec_core (insns.def:1899)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4E88BFD: any_iter_i (enum.c:992)
+==26723==    by 0x4F9BA5D: vm_yield_with_cfunc (vm_insnhelper.c:739)
+==26723==    by 0x4FA8EB6: rb_yield (vm.c:654)
+==26723==    by 0x4E5DE41: rb_ary_each (array.c:1478)
+==26723==    by 0x4FA4BF6: vm_call0 (vm_eval.c:79)
+==26723==    by 0x4F9AB91: rb_iterate (vm_eval.c:882)
+==26723==    by 0x4F9AD4C: rb_block_call (vm_eval.c:962)
+==26723==    by 0x4E8820F: enum_any (enum.c:1024)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F3EA1F: require_libraries (ruby.c:491)
+==26723==    by 0x4F41598: process_options (ruby.c:1392)
+==26723==    by 0x4F41F3F: ruby_process_options (ruby.c:1806)
+==26723==    by 0x4E97538: ruby_options (eval.c:73)
+==26723==    by 0x4007F2: main (main.c:38)
+==26723==  Address 0x953bd60 is 32 bytes inside a block of size 34 alloc'd
+==26723==    at 0x4C2B6CD: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==26723==    by 0x4E85F0F: glob_helper (dir.c:1445)
+==26723==    by 0x4E86B0B: ruby_glob0 (dir.c:1516)
+==26723==    by 0x4E86EA6: ruby_brace_expand.constprop.7 (dir.c:1620)
+==26723==    by 0x4E87194: rb_push_glob (dir.c:1655)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9E3F5: vm_exec_core (insns.def:1899)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4E88BFD: any_iter_i (enum.c:992)
+==26723==    by 0x4F9BA5D: vm_yield_with_cfunc (vm_insnhelper.c:739)
+==26723==    by 0x4FA8EB6: rb_yield (vm.c:654)
+==26723==    by 0x4E5DE41: rb_ary_each (array.c:1478)
+==26723==    by 0x4FA4BF6: vm_call0 (vm_eval.c:79)
+==26723==    by 0x4F9AB91: rb_iterate (vm_eval.c:882)
+==26723==    by 0x4F9AD4C: rb_block_call (vm_eval.c:962)
+==26723==    by 0x4E8820F: enum_any (enum.c:1024)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F3EA1F: require_libraries (ruby.c:491)
+==26723==    by 0x4F41598: process_options (ruby.c:1392)
+==26723==    by 0x4F41F3F: ruby_process_options (ruby.c:1806)
+==26723==    by 0x4E97538: ruby_options (eval.c:73)
+==26723==    by 0x4007F2: main (main.c:38)
+==26723== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:glob_helper
+   fun:ruby_glob0
+   fun:ruby_brace_expand.constprop.7
+   fun:rb_push_glob
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:any_iter_i
+   fun:vm_yield_with_cfunc
+   fun:rb_yield
+   fun:rb_ary_each
+   fun:vm_call0
+   fun:rb_iterate
+   fun:rb_block_call
+   fun:enum_any
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:vm_call0
+   fun:rb_class_new_instance
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:rb_iseq_eval
+}
+==26723== Invalid read of size 4
+==26723==    at 0x4E85FE1: glob_helper (dir.c:1252)
+==26723==    by 0x4E86B0B: ruby_glob0 (dir.c:1516)
+==26723==    by 0x4E86EA6: ruby_brace_expand.constprop.7 (dir.c:1620)
+==26723==    by 0x4E87194: rb_push_glob (dir.c:1655)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9E3F5: vm_exec_core (insns.def:1899)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4E88BFD: any_iter_i (enum.c:992)
+==26723==    by 0x4F9BA5D: vm_yield_with_cfunc (vm_insnhelper.c:739)
+==26723==    by 0x4FA8EB6: rb_yield (vm.c:654)
+==26723==    by 0x4E5DE41: rb_ary_each (array.c:1478)
+==26723==    by 0x4FA4BF6: vm_call0 (vm_eval.c:79)
+==26723==    by 0x4F9AB91: rb_iterate (vm_eval.c:882)
+==26723==    by 0x4F9AD4C: rb_block_call (vm_eval.c:962)
+==26723==    by 0x4E8820F: enum_any (enum.c:1024)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F3EA1F: require_libraries (ruby.c:491)
+==26723==    by 0x4F41598: process_options (ruby.c:1392)
+==26723==    by 0x4F41F3F: ruby_process_options (ruby.c:1806)
+==26723==    by 0x4E97538: ruby_options (eval.c:73)
+==26723==    by 0x4007F2: main (main.c:38)
+==26723==  Address 0x953bd60 is 32 bytes inside a block of size 34 alloc'd
+==26723==    at 0x4C2B6CD: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==26723==    by 0x4E85F0F: glob_helper (dir.c:1445)
+==26723==    by 0x4E86B0B: ruby_glob0 (dir.c:1516)
+==26723==    by 0x4E86EA6: ruby_brace_expand.constprop.7 (dir.c:1620)
+==26723==    by 0x4E87194: rb_push_glob (dir.c:1655)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9E3F5: vm_exec_core (insns.def:1899)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4E88BFD: any_iter_i (enum.c:992)
+==26723==    by 0x4F9BA5D: vm_yield_with_cfunc (vm_insnhelper.c:739)
+==26723==    by 0x4FA8EB6: rb_yield (vm.c:654)
+==26723==    by 0x4E5DE41: rb_ary_each (array.c:1478)
+==26723==    by 0x4FA4BF6: vm_call0 (vm_eval.c:79)
+==26723==    by 0x4F9AB91: rb_iterate (vm_eval.c:882)
+==26723==    by 0x4F9AD4C: rb_block_call (vm_eval.c:962)
+==26723==    by 0x4E8820F: enum_any (enum.c:1024)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F3EA1F: require_libraries (ruby.c:491)
+==26723==    by 0x4F41598: process_options (ruby.c:1392)
+==26723==    by 0x4F41F3F: ruby_process_options (ruby.c:1806)
+==26723==    by 0x4E97538: ruby_options (eval.c:73)
+==26723==    by 0x4007F2: main (main.c:38)
+==26723== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:glob_helper
+   fun:ruby_glob0
+   fun:ruby_brace_expand.constprop.7
+   fun:rb_push_glob
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:any_iter_i
+   fun:vm_yield_with_cfunc
+   fun:rb_yield
+   fun:rb_ary_each
+   fun:vm_call0
+   fun:rb_iterate
+   fun:rb_block_call
+   fun:enum_any
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:vm_call0
+   fun:rb_class_new_instance
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:rb_iseq_eval
+}
+==26723== Invalid read of size 4
+==26723==    at 0x4E861E8: glob_helper (dir.c:1139)
+==26723==    by 0x4E860B7: glob_helper (dir.c:1474)
+==26723==    by 0x4E86B0B: ruby_glob0 (dir.c:1516)
+==26723==    by 0x4E86EA6: ruby_brace_expand.constprop.7 (dir.c:1620)
+==26723==    by 0x4E87194: rb_push_glob (dir.c:1655)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9E3F5: vm_exec_core (insns.def:1899)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4E88BFD: any_iter_i (enum.c:992)
+==26723==    by 0x4F9BA5D: vm_yield_with_cfunc (vm_insnhelper.c:739)
+==26723==    by 0x4FA8EB6: rb_yield (vm.c:654)
+==26723==    by 0x4E5DE41: rb_ary_each (array.c:1478)
+==26723==    by 0x4FA4BF6: vm_call0 (vm_eval.c:79)
+==26723==    by 0x4F9AB91: rb_iterate (vm_eval.c:882)
+==26723==    by 0x4F9AD4C: rb_block_call (vm_eval.c:962)
+==26723==    by 0x4E8820F: enum_any (enum.c:1024)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F3EA1F: require_libraries (ruby.c:491)
+==26723==    by 0x4F41598: process_options (ruby.c:1392)
+==26723==    by 0x4F41F3F: ruby_process_options (ruby.c:1806)
+==26723==    by 0x4E97538: ruby_options (eval.c:73)
+==26723==    by 0x4007F2: main (main.c:38)
+==26723==  Address 0x9455a48 is 8 bytes inside a block of size 9 alloc'd
+==26723==    at 0x4C2B6CD: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==26723==    by 0x4E85F0F: glob_helper (dir.c:1445)
+==26723==    by 0x4E860B7: glob_helper (dir.c:1474)
+==26723==    by 0x4E86B0B: ruby_glob0 (dir.c:1516)
+==26723==    by 0x4E86EA6: ruby_brace_expand.constprop.7 (dir.c:1620)
+==26723==    by 0x4E87194: rb_push_glob (dir.c:1655)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9E3F5: vm_exec_core (insns.def:1899)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4E88BFD: any_iter_i (enum.c:992)
+==26723==    by 0x4F9BA5D: vm_yield_with_cfunc (vm_insnhelper.c:739)
+==26723==    by 0x4FA8EB6: rb_yield (vm.c:654)
+==26723==    by 0x4E5DE41: rb_ary_each (array.c:1478)
+==26723==    by 0x4FA4BF6: vm_call0 (vm_eval.c:79)
+==26723==    by 0x4F9AB91: rb_iterate (vm_eval.c:882)
+==26723==    by 0x4F9AD4C: rb_block_call (vm_eval.c:962)
+==26723==    by 0x4E8820F: enum_any (enum.c:1024)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F3EA1F: require_libraries (ruby.c:491)
+==26723==    by 0x4F41598: process_options (ruby.c:1392)
+==26723==    by 0x4F41F3F: ruby_process_options (ruby.c:1806)
+==26723==    by 0x4E97538: ruby_options (eval.c:73)
+==26723==    by 0x4007F2: main (main.c:38)
+==26723== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:glob_helper
+   fun:glob_helper
+   fun:ruby_glob0
+   fun:ruby_brace_expand.constprop.7
+   fun:rb_push_glob
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:any_iter_i
+   fun:vm_yield_with_cfunc
+   fun:rb_yield
+   fun:rb_ary_each
+   fun:vm_call0
+   fun:rb_iterate
+   fun:rb_block_call
+   fun:enum_any
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:vm_call0
+   fun:rb_class_new_instance
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+}
+==26723== Invalid read of size 4
+==26723==    at 0x4E85FE1: glob_helper (dir.c:1252)
+==26723==    by 0x4E860B7: glob_helper (dir.c:1474)
+==26723==    by 0x4E86B0B: ruby_glob0 (dir.c:1516)
+==26723==    by 0x4E86EA6: ruby_brace_expand.constprop.7 (dir.c:1620)
+==26723==    by 0x4E87194: rb_push_glob (dir.c:1655)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9E3F5: vm_exec_core (insns.def:1899)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4E88BFD: any_iter_i (enum.c:992)
+==26723==    by 0x4F9BA5D: vm_yield_with_cfunc (vm_insnhelper.c:739)
+==26723==    by 0x4FA8EB6: rb_yield (vm.c:654)
+==26723==    by 0x4E5DE41: rb_ary_each (array.c:1478)
+==26723==    by 0x4FA4BF6: vm_call0 (vm_eval.c:79)
+==26723==    by 0x4F9AB91: rb_iterate (vm_eval.c:882)
+==26723==    by 0x4F9AD4C: rb_block_call (vm_eval.c:962)
+==26723==    by 0x4E8820F: enum_any (enum.c:1024)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F3EA1F: require_libraries (ruby.c:491)
+==26723==    by 0x4F41598: process_options (ruby.c:1392)
+==26723==    by 0x4F41F3F: ruby_process_options (ruby.c:1806)
+==26723==    by 0x4E97538: ruby_options (eval.c:73)
+==26723==    by 0x4007F2: main (main.c:38)
+==26723==  Address 0x9455a48 is 8 bytes inside a block of size 9 alloc'd
+==26723==    at 0x4C2B6CD: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==26723==    by 0x4E85F0F: glob_helper (dir.c:1445)
+==26723==    by 0x4E860B7: glob_helper (dir.c:1474)
+==26723==    by 0x4E86B0B: ruby_glob0 (dir.c:1516)
+==26723==    by 0x4E86EA6: ruby_brace_expand.constprop.7 (dir.c:1620)
+==26723==    by 0x4E87194: rb_push_glob (dir.c:1655)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9E3F5: vm_exec_core (insns.def:1899)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4E88BFD: any_iter_i (enum.c:992)
+==26723==    by 0x4F9BA5D: vm_yield_with_cfunc (vm_insnhelper.c:739)
+==26723==    by 0x4FA8EB6: rb_yield (vm.c:654)
+==26723==    by 0x4E5DE41: rb_ary_each (array.c:1478)
+==26723==    by 0x4FA4BF6: vm_call0 (vm_eval.c:79)
+==26723==    by 0x4F9AB91: rb_iterate (vm_eval.c:882)
+==26723==    by 0x4F9AD4C: rb_block_call (vm_eval.c:962)
+==26723==    by 0x4E8820F: enum_any (enum.c:1024)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4EDF86F: rb_class_new_instance (object.c:1636)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA995F: rb_iseq_eval (vm.c:1447)
+==26723==    by 0x4E98262: rb_load_internal (load.c:310)
+==26723==    by 0x4E996CE: rb_require_safe (load.c:619)
+==26723==    by 0x4FA7750: vm_call_method (vm_insnhelper.c:404)
+==26723==    by 0x4F9D418: vm_exec_core (insns.def:1015)
+==26723==    by 0x4FA38A9: vm_exec (vm.c:1220)
+==26723==    by 0x4FA4D52: vm_call0 (vm_eval.c:66)
+==26723==    by 0x4F3EA1F: require_libraries (ruby.c:491)
+==26723==    by 0x4F41598: process_options (ruby.c:1392)
+==26723==    by 0x4F41F3F: ruby_process_options (ruby.c:1806)
+==26723==    by 0x4E97538: ruby_options (eval.c:73)
+==26723==    by 0x4007F2: main (main.c:38)
+==26723== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:glob_helper
+   fun:glob_helper
+   fun:ruby_glob0
+   fun:ruby_brace_expand.constprop.7
+   fun:rb_push_glob
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:any_iter_i
+   fun:vm_yield_with_cfunc
+   fun:rb_yield
+   fun:rb_ary_each
+   fun:vm_call0
+   fun:rb_iterate
+   fun:rb_block_call
+   fun:enum_any
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+   fun:vm_call0
+   fun:rb_class_new_instance
+   fun:vm_call_method
+   fun:vm_exec_core
+   fun:vm_exec
+}
+/home/miked/code/oss/nokogiri/test/helper.rb:10: version info: {"warnings"=>[], "nokogiri"=>"1.5.6.rc2", "ruby"=>{"version"=>"1.9.3", "platform"=>"x86_64-linux", "description"=>"ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-linux]", "engine"=>"ruby"}, "libxml"=>{"binding"=>"extension", "compiled"=>"2.7.8", "loaded"=>"2.7.8"}}
+==26768== 
+==26768== HEAP SUMMARY:
+==26768==     in use at exit: 20,392,105 bytes in 117,929 blocks
+==26768==   total heap usage: 2,579,630 allocs, 2,461,701 frees, 521,991,635 bytes allocated
+==26768== 
+==26768== LEAK SUMMARY:
+==26768==    definitely lost: 2,931 bytes in 31 blocks
+==26768==    indirectly lost: 6,388 bytes in 119 blocks
+==26768==      possibly lost: 0 bytes in 0 blocks
+==26768==    still reachable: 20,382,786 bytes in 117,779 blocks
+==26768==         suppressed: 0 bytes in 0 blocks
+==26768== Rerun with --leak-check=full to see details of leaked memory
+==26768== 
+==26768== For counts of detected and suppressed errors, rerun with: -v
+==26768== ERROR SUMMARY: 24 errors from 8 contexts (suppressed: 0 from 0)
+==26723== 
+==26723== HEAP SUMMARY:
+==26723==     in use at exit: 26,305,683 bytes in 115,956 blocks
+==26723==   total heap usage: 3,400,070 allocs, 3,284,114 frees, 700,637,546 bytes allocated
+==26723== 
+==26723== LEAK SUMMARY:
+==26723==    definitely lost: 21,760,117 bytes in 38,642 blocks
+==26723==    indirectly lost: 2,684,823 bytes in 48,267 blocks
+==26723==      possibly lost: 296,994 bytes in 398 blocks
+==26723==    still reachable: 1,563,749 bytes in 28,649 blocks
+==26723==         suppressed: 0 bytes in 0 blocks
+==26723== Rerun with --leak-check=full to see details of leaked memory
+==26723== 
+==26723== For counts of detected and suppressed errors, rerun with: -v
+==26723== ERROR SUMMARY: 24 errors from 8 contexts (suppressed: 0 from 0)
