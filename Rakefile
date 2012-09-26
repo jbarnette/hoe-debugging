@@ -7,6 +7,7 @@ Hoe.plugin :bundler
 
 Hoe.spec "hoe-debugging" do
   developer "John Barnette", "jbarnette@rubyforge.org"
+  developer "Mike Dalessio", "mike.dalessio@gmail.com"
 
   self.extra_rdoc_files = FileList["*.rdoc"]
   self.history_file     = "CHANGELOG.rdoc"
