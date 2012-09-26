@@ -49,29 +49,36 @@ class Hoe #:nodoc:
       cmd.join(' ')
     end
 
+    def hoe_debugging_command
+      "#{hoe_debugging_ruby} #{hoe_debugging_make_test_cmd}"
+    end
+
+    def hoe_debugging_run_valgrind command, cmdline_options=[]
+      sh "valgrind #{cmdline_options.join(' ')} #{command}"
+    end
+
     def define_debugging_tasks #:nodoc:
       desc "Run the test suite under GDB."
       task "test:gdb" do
-        sh "gdb #{gdb_options.join ' '} --args #{hoe_debugging_ruby} #{hoe_debugging_make_test_cmd}"
+        sh "gdb #{gdb_options.join ' '} --args #{hoe_debugging_command}"
       end
 
       desc "Run the test suite under Valgrind."
       task "test:valgrind" do
-        sh "valgrind #{valgrind_options.join ' '} #{hoe_debugging_ruby} #{hoe_debugging_make_test_cmd}"
+        vopts = valgrind_options
+        hoe_debugging_run_valgrind hoe_debugging_command, vopts
       end
 
       desc "Run the test suite under Valgrind with memory-fill."
       task "test:valgrind:mem" do
-        sh "valgrind #{valgrind_options.join ' '} " +
-          "--freelist-vol=100000000 --malloc-fill=6D --free-fill=66 " +
-          "#{hoe_debugging_ruby} #{hoe_debugging_make_test_cmd}"
+        vopts = valgrind_options + ["--freelist-vol=100000000", "--malloc-fill=6D", "--free-fill=66"]
+        hoe_debugging_run_valgrind hoe_debugging_command, vopts
       end
 
       desc "Run the test suite under Valgrind with memory-zero."
       task "test:valgrind:mem0" do
-        sh "valgrind #{valgrind_options.join ' '} " +
-          "--freelist-vol=100000000 --malloc-fill=00 --free-fill=00 " +
-          "#{hoe_debugging_ruby} #{hoe_debugging_make_test_cmd}"
+        vopts = valgrind_options + ["--freelist-vol=100000000", "--malloc-fill=00", "--free-fill=00"]
+        hoe_debugging_run_valgrind hoe_debugging_command, vopts
       end
     end
   end
