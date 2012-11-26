@@ -116,7 +116,11 @@ class Hoe #:nodoc:
       end
 
       def formatted_ruby_version
-        engine = defined?(RUBY_ENGINE) ? RUBY_ENGINE : "ruby"
+        engine = if defined?(RUBY_DESCRIPTION) && RUBY_DESCRIPTION =~ /Ruby Enterprise Edition/
+                   "ree"
+                 else
+                   defined?(RUBY_ENGINE) ? RUBY_ENGINE : "ruby"
+                 end
         %Q{#{engine}-#{RUBY_VERSION}.#{RUBY_PATCHLEVEL}}
       end
 
