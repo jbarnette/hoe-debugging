@@ -1,3 +1,15 @@
+=== 1.2.0 / 2015-01-22
+
+Features:
+
+* Ruby 2.2 support.
+
+
+Bugfixes:
+
+* Replace references to `Config` with `RbConfig`, for Ruby 2.2 support.
+
+
 === 1.1.1 / 2012-11-26
 
 Bugfixes:

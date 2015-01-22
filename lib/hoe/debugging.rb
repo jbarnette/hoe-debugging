@@ -35,7 +35,7 @@ class Hoe #:nodoc:
 
     def hoe_debugging_ruby
       # http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/151376
-      @ruby ||= File.join(Config::CONFIG["bindir"], (Config::CONFIG["RUBY_INSTALL_NAME"] + Config::CONFIG["EXEEXT"]))
+      @ruby ||= File.join(RbConfig::CONFIG["bindir"], (RbConfig::CONFIG["RUBY_INSTALL_NAME"] + RbConfig::CONFIG["EXEEXT"]))
     end
 
     def hoe_debugging_make_test_cmd
