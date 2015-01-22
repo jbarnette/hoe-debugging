@@ -15,7 +15,7 @@ Hoe.spec "hoe-debugging" do
 
   license "MIT"
 
-  extra_dev_deps << ["hoe",         ">= 3.1"]
+  extra_dev_deps << ["hoe",         "~> 3.1"]
   extra_dev_deps << ["rspec",       "~> 2.0"]
   extra_dev_deps << ["hoe-git",     ">= 0"]
   extra_dev_deps << ["hoe-gemspec", ">= 0"]
