@@ -54,7 +54,7 @@ class Hoe #:nodoc:
     end
 
     def hoe_debugging_run_valgrind command, cmdline_options=[]
-      sh "valgrind #{cmdline_options.join(' ')} #{command}"
+      sh "#{hoe_debugging_valgrind_helper.valgrind} #{cmdline_options.join(' ')} #{command}"
     end
 
     def hoe_debugging_check_for_suppression_file options
@@ -170,8 +170,10 @@ class Hoe #:nodoc:
         nil
       end
 
-      def valgrind command, options={}
-        sh "valgrind #{vopts.join ' '} #{hoe_debugging_ruby} #{hoe_debugging_make_test_cmd}"
+      def valgrind
+        # note that valgrind will generally crap out on rubies >= 2.1
+        # unless we increase the max stack size beyond the default
+        "ulimit -s unlimited && valgrind"
       end
 
       private
