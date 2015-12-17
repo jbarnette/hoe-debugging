@@ -10,7 +10,7 @@ class Hoe #:nodoc:
   # * <tt>test:valgrind:mem0</tt>
 
   module Debugging
-    VERSION = "1.2.0" #:nodoc:
+    VERSION = "1.2.1" #:nodoc:
 
     ##
     # Optional: Used to add flags to GDB. [default: <tt>[]</tt>]

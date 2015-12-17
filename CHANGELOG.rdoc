@@ -1,3 +1,10 @@
+=== 1.2.1 / 2015-12-16
+
+Features:
+
+* Set larger stack size (via `ulimit -s`) to properly support Ruby 2.1 and later
+
+
 === 1.2.0 / 2015-01-22
 
 Features:
