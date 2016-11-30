@@ -1,4 +1,5 @@
 require 'rbconfig'
+require 'tempfile'
 
 class Hoe #:nodoc:
 
