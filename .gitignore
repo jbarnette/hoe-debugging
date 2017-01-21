@@ -1,4 +1,5 @@
 *.so
+Gemfile.lock
 doc
 hoe-debugging.gemspec
 pkg

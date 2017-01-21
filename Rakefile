@@ -15,11 +15,13 @@ Hoe.spec "hoe-debugging" do
 
   license "MIT"
 
-  extra_dev_deps << ["hoe",         "~> 3.1"]
-  extra_dev_deps << ["rspec",       "~> 2.0"]
-  extra_dev_deps << ["hoe-git",     ">= 0"]
-  extra_dev_deps << ["hoe-gemspec", ">= 0"]
-  extra_dev_deps << ["hoe-bundler", ">= 0"]
+  extra_dev_deps << ["bundler",       ">= 0"]
+  extra_dev_deps << ["hoe",           "~> 3.1"]
+  extra_dev_deps << ["hoe-bundler",   ">= 0"]
+  extra_dev_deps << ["hoe-gemspec",   ">= 0"]
+  extra_dev_deps << ["hoe-git",       ">= 0"]
+  extra_dev_deps << ["rake-compiler", ">= 0"]
+  extra_dev_deps << ["rspec",         "~> 3.5.0"]
 end
 
-task "spec" => "gem:spec" # so the integration tests work
+task "spec" => ["bundler:gemfile", "gem:spec"] # so the integration tests work

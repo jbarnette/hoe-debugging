@@ -109,20 +109,24 @@ describe Hoe::Debugging::ValgrindHelper do
 
     context "from a good run" do
       it "is zero" do
-        Dir.chdir test_dir do
-          system "bundle exec rake test:valgrind TESTOPTS='--name /notexist/' > good-run.log 2>&1"
-          exitcode = $?
-          expect(exitcode.success?).to be_truthy
+        Bundler.with_clean_env do
+          Dir.chdir test_dir do
+            system "bundle exec rake test:valgrind TESTOPTS='--name /notexist/' > good-run.log 2>&1"
+            exitcode = $?
+            expect(exitcode.success?).to be_truthy
+          end
         end
       end
     end
 
     context "from a bad run" do
       it "is nonzero" do
-        Dir.chdir test_dir do
-          system "bundle exec rake test:valgrind > bad-run.log 2>&1"
-          exitcode = $?
-          expect(exitcode.success?).to be_falsey
+        Bundler.with_clean_env do
+          Dir.chdir test_dir do
+            system "bundle exec rake test:valgrind > bad-run.log 2>&1"
+            exitcode = $?
+            expect(exitcode.success?).to be_falsey
+          end
         end
       end
     end
