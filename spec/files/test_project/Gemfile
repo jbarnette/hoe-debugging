@@ -1,4 +1,5 @@
+gem "bundler"
 gem "hoe"
 gem "hoe-debugging", path: "../../.."
-gem "rake-compiler"
 gem "minitest"
+gem "rake-compiler"
