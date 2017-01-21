@@ -21,3 +21,5 @@ Hoe.spec "hoe-debugging" do
   extra_dev_deps << ["hoe-gemspec", ">= 0"]
   extra_dev_deps << ["hoe-bundler", ">= 0"]
 end
+
+task "spec" => "gem:spec" # so the integration tests work

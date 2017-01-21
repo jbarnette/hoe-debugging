@@ -1,0 +1,28 @@
+# -*- ruby -*-
+
+require "rubygems"
+require "hoe"
+
+require 'rake/extensiontask'
+
+# Hoe.plugin :bundler
+# Hoe.plugin :compiler
+Hoe.plugin :debugging
+# Hoe.plugin :gem_prelude_sucks
+# Hoe.plugin :gemspec
+# Hoe.plugin :git
+# Hoe.plugin :inline
+# Hoe.plugin :minitest
+# Hoe.plugin :racc
+# Hoe.plugin :rcov
+# Hoe.plugin :rdoc
+
+HOE = Hoe.spec "test_project" do |spec|
+  developer("Hoe Debuggin", "hoedebuggin@example.com")
+  license("MIT")
+  spec.version = "1.0.0"
+end
+
+Rake::ExtensionTask.new("test_project")
+
+# vim: syntax=ruby
