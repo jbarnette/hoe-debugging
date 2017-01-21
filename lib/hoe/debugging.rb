@@ -10,7 +10,7 @@ class Hoe #:nodoc:
   # * <tt>test:valgrind:mem0</tt>
 
   module Debugging
-    VERSION = "1.2.1" #:nodoc:
+    VERSION = "1.3.0" #:nodoc:
 
     ##
     # The exit code of valgrind when it detects an error.

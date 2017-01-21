@@ -1,3 +1,8 @@
+=== 1.3.0 / 2017-01-20
+
+* The rake task now fails if valgrind detects any errors during the run.
+
+
 === 1.2.1 / 2015-12-16
 
 Features:
