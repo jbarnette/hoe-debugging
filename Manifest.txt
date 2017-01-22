@@ -1,7 +1,8 @@
 .rspec
 CHANGELOG.rdoc
+LICENSE
 Manifest.txt
-README.rdoc
+README.md
 Rakefile
 lib/hoe/debugging.rb
 spec/files/sample.log
