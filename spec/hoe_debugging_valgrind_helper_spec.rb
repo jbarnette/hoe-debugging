@@ -113,7 +113,7 @@ describe Hoe::Debugging::ValgrindHelper do
           Dir.chdir test_dir do
             system "bundle exec rake test:valgrind TESTOPTS='--name /notexist/' > good-run.log 2>&1"
             exitcode = $?
-            expect(exitcode.success?).to be_truthy
+            expect(exitcode.success?).to(be_truthy, File.read("good-run.log"))
           end
         end
       end
@@ -125,7 +125,7 @@ describe Hoe::Debugging::ValgrindHelper do
           Dir.chdir test_dir do
             system "bundle exec rake test:valgrind > bad-run.log 2>&1"
             exitcode = $?
-            expect(exitcode.success?).to be_falsey
+            expect(exitcode.success?).to(be_falsey, File.read("bad-run.log"))
           end
         end
       end
