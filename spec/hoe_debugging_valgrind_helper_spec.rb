@@ -1,5 +1,4 @@
-require File.join File.dirname(__FILE__), "../lib/hoe/debugging"
-require 'fileutils'
+require_relative "spec_helper.rb"
 
 describe Hoe::Debugging::ValgrindHelper do
   let(:logfile)  { File.join File.dirname(__FILE__), "files/sample.log" }
@@ -93,41 +92,6 @@ describe Hoe::Debugging::ValgrindHelper do
       it "returns nil" do
         helper = klass.new "myproj", :directory => suppressions_directory
         expect(helper.matching_suppression_file).to be_nil
-      end
-    end
-  end
-
-  describe "exit code" do
-    let(:test_dir) { File.join(File.dirname(__FILE__), "files/test_project") }
-
-    before do
-      Dir.chdir test_dir do
-        system "bundle install > /dev/null 2>&1"
-        system "bundle exec rake compile > /dev/null 2>&1 "
-      end
-    end
-
-    context "from a good run" do
-      it "is zero" do
-        Bundler.with_clean_env do
-          Dir.chdir test_dir do
-            system "bundle exec rake test:valgrind TESTOPTS='--name /notexist/' > good-run.log 2>&1"
-            exitcode = $?
-            expect(exitcode.success?).to(be_truthy, File.read("good-run.log"))
-          end
-        end
-      end
-    end
-
-    context "from a bad run" do
-      it "is nonzero" do
-        Bundler.with_clean_env do
-          Dir.chdir test_dir do
-            system "bundle exec rake test:valgrind > bad-run.log 2>&1"
-            exitcode = $?
-            expect(exitcode.success?).to(be_falsey, File.read("bad-run.log"))
-          end
-        end
       end
     end
   end
