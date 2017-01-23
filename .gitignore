@@ -6,3 +6,4 @@ pkg
 spec/files/test_project/*.log
 spec/files/test_project/Gemfile.lock
 tmp
+concourse/*yml

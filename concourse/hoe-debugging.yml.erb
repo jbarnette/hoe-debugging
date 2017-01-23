@@ -1,0 +1,34 @@
+resources:
+- name: hoe-debugging
+  type: git
+  source:
+    uri: https://github.com/jbarnette/hoe-debugging/
+    branch: master
+
+jobs:
+  <% ruby_version = RUBIES[:mri].last %>
+  - name: "ruby-<%= ruby_version %>"
+    public: true
+    plan:
+      - get: hoe-debugging
+        trigger: true
+      - task: rake-test
+        config:
+          image_resource:
+            type: docker-image
+            source:
+              repository: ruby
+              tag: "<%= ruby_version %>"
+          platform: linux
+          inputs:
+            - name: hoe-debugging
+          run:
+            path: bash
+            args:
+              - "-c"
+              - >-
+                apt update &&
+                apt install -y valgrind &&
+                bundle install &&
+                bundle exec rake spec
+            dir: hoe-debugging

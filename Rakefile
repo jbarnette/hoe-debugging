@@ -1,5 +1,6 @@
 require "rubygems"
 require "hoe"
+require "concourse"
 
 Hoe.plugin :git
 Hoe.plugin :gemspec
@@ -22,6 +23,9 @@ Hoe.spec "hoe-debugging" do
   extra_dev_deps << ["hoe-git",       ">= 0"]
   extra_dev_deps << ["rake-compiler", ">= 0"]
   extra_dev_deps << ["rspec",         "~> 3.5.0"]
+  extra_dev_deps << ["concourse",     "~> 0.1"]
 end
 
 task "spec" => ["bundler:gemfile", "gem:spec"] # so the integration tests work
+
+Concourse.new("hoe-debugging").create_tasks!

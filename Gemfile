@@ -12,6 +12,7 @@ gem "hoe-gemspec", ">=0", :group => [:development, :test]
 gem "hoe-git", ">=0", :group => [:development, :test]
 gem "rake-compiler", ">=0", :group => [:development, :test]
 gem "rspec", "~>3.5.0", :group => [:development, :test]
+gem "concourse", "~>0.1", :group => [:development, :test]
 gem "rdoc", "~>4.0", :group => [:development, :test]
 
 # vim: syntax=ruby
