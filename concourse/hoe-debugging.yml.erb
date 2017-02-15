@@ -1,34 +1,35 @@
 resources:
-- name: hoe-debugging
-  type: git
-  source:
-    uri: https://github.com/jbarnette/hoe-debugging/
-    branch: master
+  - name: ci
+    type: git
+    source:
+      uri: https://github.com/jbarnette/hoe-debugging/
+      branch: master
+      disable_ci_skip: true # always get the latest pipeline configuration
+
+  - name: hoe-debugging
+    type: git
+    source:
+      uri: https://github.com/jbarnette/hoe-debugging/
+      branch: master
+      ignore_paths:
+        - concourse/**
 
 jobs:
   <% ruby_version = RUBIES[:mri].last %>
   - name: "ruby-<%= ruby_version %>"
     public: true
     plan:
+      - get: ci
       - get: hoe-debugging
         trigger: true
       - task: rake-test
         config:
+          platform: linux
           image_resource:
             type: docker-image
-            source:
-              repository: ruby
-              tag: "<%= ruby_version %>"
-          platform: linux
+            source: {repository: ruby, tag: "<%= ruby_version %>"}
           inputs:
+            - name: ci
             - name: hoe-debugging
           run:
-            path: bash
-            args:
-              - "-c"
-              - >-
-                apt update &&
-                apt install -y valgrind &&
-                bundle install &&
-                bundle exec rake spec
-            dir: hoe-debugging
+            path: ci/concourse/tasks/rake-test/task.sh
