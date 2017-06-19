@@ -155,7 +155,7 @@ class Hoe #:nodoc:
             line = logfile.readline
             if suppression.nil?
               if line =~ /\<insert_a_suppression_name_here\>/
-                suppression = "{\n"
+                suppression = String.new "{\n"
                 suppression << line
               end
             else
