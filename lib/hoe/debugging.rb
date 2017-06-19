@@ -1,4 +1,5 @@
 require 'rbconfig'
+require 'tempfile'
 
 class Hoe #:nodoc:
 
@@ -104,9 +105,18 @@ class Hoe #:nodoc:
       desc "Generate a valgrind suppression file for your test suite."
       task "test:valgrind:suppression" do
         vopts = valgrind_options + ["--gen-suppressions=all"]
-        Tempfile.open "hoe_debugging_valgrind_suppression_log" do |logfile|
-          hoe_debugging_run_valgrind "#{hoe_debugging_ruby} #{hoe_debugging_make_test_cmd} 2> #{logfile.path}", vopts
-          hoe_debugging_valgrind_helper.save_suppressions_from logfile.path
+        generated_suppression_file = false
+        ::Tempfile.open "hoe_debugging_valgrind_suppression_log" do |logfile|
+          begin
+            hoe_debugging_run_valgrind "#{hoe_debugging_ruby} #{hoe_debugging_make_test_cmd} 2> #{logfile.path}", vopts
+          rescue RuntimeError
+            suppfile = hoe_debugging_valgrind_helper.save_suppressions_from logfile.path
+            puts "NOTICE: saved suppressions to #{suppfile}"
+            generated_suppression_file = true
+          end
+        end
+        unless generated_suppression_file
+          puts "WARNING: no valgrind warnings detected, no suppressions file generated"
         end
       end
     end
