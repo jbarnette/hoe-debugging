@@ -144,6 +144,7 @@ class Hoe #:nodoc:
         matches = [formatted_ruby_version]
         matches << formatted_ruby_version.split(".")[0,3].join(".")
         matches << formatted_ruby_version.split(".")[0,2].join(".")
+        matches << formatted_ruby_version.split(".")[0,1].join(".")
         matches
       end
 
