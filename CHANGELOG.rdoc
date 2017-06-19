@@ -1,3 +1,10 @@
+=== 1.4.1 / 2017-06-19
+
+Features:
+
+* Support frozen string constants.
+
+
 === 1.4.0 / 2017-06-19
 
 Features:
