@@ -27,7 +27,7 @@ describe Hoe::Debugging::ValgrindHelper do
     it "returns possible suppression file matches in order of specificity" do
       helper = klass.new "myproj"
       allow(helper).to receive(:formatted_ruby_version) { "ruby-1.9.3.194" }
-      expect(helper.version_matches).to eq %w[ruby-1.9.3.194 ruby-1.9.3 ruby-1.9]
+      expect(helper.version_matches).to eq %w[ruby-1.9.3.194 ruby-1.9.3 ruby-1.9 ruby-1]
     end
   end
 
