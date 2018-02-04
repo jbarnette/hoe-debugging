@@ -15,7 +15,7 @@ resources:
         - concourse/**
 
 jobs:
-  <% ruby_version = RUBIES[:mri].last %>
+% RUBIES[:mri].last(2).each do |ruby_version|
   - name: "ruby-<%= ruby_version %>"
     public: true
     plan:
@@ -33,3 +33,4 @@ jobs:
             - name: hoe-debugging
           run:
             path: ci/concourse/tasks/rake-test/task.sh
+% end
