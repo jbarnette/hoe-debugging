@@ -5,7 +5,7 @@
 source "https://rubygems.org/"
 
 
-gem "bundler", ">=0", :group => [:development, :test]
+gem "bundler", "~>1.16.0", :group => [:development, :test]
 gem "hoe", "~>3.1", :group => [:development, :test]
 gem "hoe-bundler", ">=0", :group => [:development, :test]
 gem "hoe-gemspec", ">=0", :group => [:development, :test]
