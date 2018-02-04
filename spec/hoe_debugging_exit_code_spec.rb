@@ -31,7 +31,7 @@ describe "exit code" do
   end
 
   context "from a bad run" do
-    let(:logfile) { "good-run.log" }
+    let(:logfile) { "bad-run.log" }
     it "is nonzero" do
       Bundler.with_clean_env do
         Dir.chdir test_dir do
