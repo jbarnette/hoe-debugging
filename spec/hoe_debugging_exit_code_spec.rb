@@ -10,9 +10,13 @@ describe "exit code" do
   before do
     Bundler.with_clean_env do
       Dir.chdir test_dir do
-        sh "gem install bundler > #{logfile} 2>&1"
-        sh "bundle install >> #{logfile} 2>&1"
-        sh "bundle exec rake compile >> #{logfile} 2>&1"
+        begin
+          sh "bundle install >> #{logfile} 2>&1"
+          sh "bundle exec rake compile >> #{logfile} 2>&1"
+        rescue RuntimeError => e
+          puts "SETUP FAILED:\n#{File.read(logfile)}"
+          raise
+        end
       end
     end
   end
