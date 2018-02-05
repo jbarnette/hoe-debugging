@@ -23,6 +23,8 @@ HOE = Hoe.spec "test_project" do |spec|
   spec.version = "1.0.0"
 end
 
+raise "ERROR: failed to load gem under test" if ::Hoe.bad_plugins.include?(:debugging)
+
 Rake::ExtensionTask.new("test_project")
 
 # vim: syntax=ruby
