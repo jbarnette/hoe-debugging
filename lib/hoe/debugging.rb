@@ -37,6 +37,7 @@ class Hoe #:nodoc:
                                "--partial-loads-ok=yes",
                                "--undef-value-errors=no",
                                "--error-exitcode=#{ERROR_EXITCODE}",
+                               "--gen-suppressions=all",
                               ]
     end
 
@@ -104,7 +105,7 @@ class Hoe #:nodoc:
 
       desc "Generate a valgrind suppression file for your test suite."
       task "test:valgrind:suppression" do
-        vopts = valgrind_options + ["--gen-suppressions=all"]
+        vopts = valgrind_options
         generated_suppression_file = false
         ::Tempfile.open "hoe_debugging_valgrind_suppression_log" do |logfile|
           begin
@@ -118,6 +119,14 @@ class Hoe #:nodoc:
         unless generated_suppression_file
           puts "WARNING: no valgrind warnings detected, no suppressions file generated"
         end
+      end
+
+      desc "Generate a valgrind suppression file from a previous run's log file"
+      task "valgrind:suppression", [:file] do |task, args|
+        file_path = args[:file]
+        raise "Please specify the path to your log file" unless file
+        suppfile = hoe_debugging_valgrind_helper.save_suppressions_from file_path
+        puts "NOTICE: saved suppressions to #{suppfile}"
       end
     end
 
