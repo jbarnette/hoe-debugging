@@ -1,3 +1,13 @@
+== Changelog for `hoe-debugging`
+
+=== 1.5.0 / 2018-11-02
+
+Features:
+
+* Suppression metadata is always logged when warnings are generated
+* Rake task `valgrind:suppression` can generate a suppression file from a previous run's log file. Great for when CI finds things that are hard to reproduce!
+
+
 === 1.4.2 / 2017-06-19
 
 Features:
