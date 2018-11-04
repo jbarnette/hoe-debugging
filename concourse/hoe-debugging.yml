@@ -15,7 +15,7 @@ resources:
         - concourse/**
 
 jobs:
-% RUBIES[:mri].last(2).each do |ruby_version|
+% (RUBIES[:mri].last(2) + RUBIES[:mri].first(1)).each do |ruby_version|
   - name: "ruby-<%= ruby_version %>"
     public: true
     plan:
