@@ -54,44 +54,41 @@ describe Hoe::Debugging::ValgrindHelper do
     end
   end
 
-  describe "#matching_suppression_file" do
+  describe "#matching_suppression_files" do
     context "there are multiple matches" do
-      it "returns the best match" do
+      it "returns all matches" do
         helper = klass.new "myproj", :directory => suppressions_directory
-        exact_match = File.join(suppressions_directory, "myproj_#{helper.formatted_ruby_version}.supp")
-        inexact_match = File.join(suppressions_directory, "myproj_#{helper.version_matches[1]}.999999999.supp")
+        matching_files = helper.version_matches.map do |version_match|
+          File.join(suppressions_directory, "myproj_#{version_match}.supp")
+        end
+        inexact_match = File.join(suppressions_directory, "myproj_#{helper.version_matches[1]}.99999.supp")
+        all_files = matching_files + [inexact_match]
+
         FileUtils.mkdir_p suppressions_directory
-        FileUtils.touch inexact_match
-        FileUtils.touch exact_match
-        expect(helper.matching_suppression_file).to eq exact_match
+        all_files.each { |f| FileUtils.touch f }
+
+        expect(helper.matching_suppression_files).to eq(matching_files)
       end
-    end
 
-
-    context "there is one inexact match" do
-      it "returns it" do
+      it "returns all matches even with trailing desc" do
         helper = klass.new "myproj", :directory => suppressions_directory
-        inexact_match = File.join(suppressions_directory, "myproj_#{helper.version_matches[1]}.999999999.supp")
-        FileUtils.mkdir_p suppressions_directory
-        FileUtils.touch inexact_match
-        expect(helper.matching_suppression_file).to eq inexact_match
-      end
-    end
+        matching_files = helper.version_matches.map do |version_match|
+          File.join(suppressions_directory, "myproj_#{version_match}_foo.supp")
+        end
+        inexact_match = File.join(suppressions_directory, "myproj_#{helper.version_matches[1]}.99999_foo.supp")
+        all_files = matching_files + [inexact_match]
 
-    context "there is one exact match" do
-      it "returns it" do
-        helper = klass.new "myproj", :directory => suppressions_directory
-        exact_match = File.join(suppressions_directory, "myproj_#{helper.formatted_ruby_version}.supp")
         FileUtils.mkdir_p suppressions_directory
-        FileUtils.touch exact_match
-        expect(helper.matching_suppression_file).to eq exact_match
+        all_files.each { |f| FileUtils.touch f }
+
+        expect(helper.matching_suppression_files).to eq(matching_files)
       end
     end
 
     context "there are zero matches" do
       it "returns nil" do
         helper = klass.new "myproj", :directory => suppressions_directory
-        expect(helper.matching_suppression_file).to be_nil
+        expect(helper.matching_suppression_files).to eq([])
       end
     end
   end

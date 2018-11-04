@@ -66,7 +66,8 @@ class Hoe #:nodoc:
     end
 
     def hoe_debugging_check_for_suppression_file options
-      if suppression_file = hoe_debugging_valgrind_helper.matching_suppression_file
+      suppression_files = hoe_debugging_valgrind_helper.matching_suppression_files
+      suppression_files.each do |suppression_file|
         puts "NOTICE: using valgrind suppressions in #{suppression_file.inspect}"
         options << "--suppressions=#{suppression_file}"
       end
@@ -150,10 +151,10 @@ class Hoe #:nodoc:
       end
 
       def version_matches
-        matches = [formatted_ruby_version]
-        matches << formatted_ruby_version.split(".")[0,3].join(".")
-        matches << formatted_ruby_version.split(".")[0,2].join(".")
-        matches << formatted_ruby_version.split(".")[0,1].join(".")
+        matches = [formatted_ruby_version]                          # e.g. "ruby-2.5.1.57"
+        matches << formatted_ruby_version.split(".")[0,3].join(".") # e.g. "ruby-2.5.1"
+        matches << formatted_ruby_version.split(".")[0,2].join(".") # e.g. "ruby-2.5"
+        matches << formatted_ruby_version.split(".")[0,1].join(".") # e.g. "ruby-2"
         matches
       end
 
@@ -188,12 +189,13 @@ class Hoe #:nodoc:
         filename
       end
 
-      def matching_suppression_file
+      def matching_suppression_files
+        matching_files = []
         version_matches.each do |version_string|
-          matches = Dir[File.join(directory, "#{project_name}_#{version_string}*.supp")]
-          return matches[0] if matches[0]
+          matching_files += Dir[File.join(directory, "#{project_name}_#{version_string}.supp")]
+          matching_files += Dir[File.join(directory, "#{project_name}_#{version_string}_*.supp")]
         end
-        nil
+        matching_files
       end
 
       def valgrind

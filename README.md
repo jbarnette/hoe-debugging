@@ -60,6 +60,35 @@ rake test:valgrind # when this runs, the errors from that log file will be suppr
 ```
 
 
+## Suppression files
+
+Suppression files can be added to the `suppressions` subdirectory of your project.
+
+As of v2.0.0, `hoe-debugging` will use all suppression files that match any part of your Ruby's version. It uses the Hoe project name and the ruby version name, with an optional trailing `/_.*/`.
+
+For example, if:
+
+* my Hoe project was named `myproject`
+* and my Ruby version was `2.5.1.57` (the `57` is `RUBY_PATCHLEVEL`)
+
+then the following would be found and used:
+
+* `suppressions/myproject_ruby-2.5.1.57.supp`
+* `suppressions/myproject_ruby-2.5.1.57_namespace_deref.supp`
+* `suppressions/myproject_ruby-2.5.1.supp`
+* `suppressions/myproject_ruby-2.5.supp`
+* `suppressions/myproject_ruby-2.supp`
+* `suppressions/myproject_ruby-2_exit_frees.supp`
+
+and the following would **not** be used:
+
+* `suppressions/otherproject_ruby-2.5.1.57.supp` because the project name is wrong
+* `suppressions/myproject_ruby-2.5.1.58.supp` because the patchlevel is wrong
+* `suppressions/myproject_ruby-2.5.2.supp` because the patch is wrong
+* `suppressions/myproject_ruby-2.4.supp` because the minor is wrong
+* `suppressions/myproject_ruby-1.supp` because the major is wrong
+
+
 ## Installation
 
 ```

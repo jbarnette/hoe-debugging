@@ -1,5 +1,5 @@
 .rspec
-CHANGELOG.rdoc
+CHANGELOG.md
 LICENSE
 Manifest.txt
 README.md
