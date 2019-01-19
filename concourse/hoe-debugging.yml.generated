@@ -1,0 +1,68 @@
+resources:
+  - name: ci
+    type: git
+    source:
+      uri: https://github.com/jbarnette/hoe-debugging/
+      branch: master
+      disable_ci_skip: true # always get the latest pipeline configuration
+
+  - name: hoe-debugging
+    type: git
+    source:
+      uri: https://github.com/jbarnette/hoe-debugging/
+      branch: master
+      ignore_paths:
+        - concourse/**
+
+jobs:
+  - name: "ruby-2.5"
+    public: true
+    plan:
+      - get: ci
+      - get: hoe-debugging
+        trigger: true
+      - task: rake-test
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source: {repository: ruby, tag: "2.5"}
+          inputs:
+            - name: ci
+            - name: hoe-debugging
+          run:
+            path: ci/concourse/tasks/rake-test/task.sh
+  - name: "ruby-2.6"
+    public: true
+    plan:
+      - get: ci
+      - get: hoe-debugging
+        trigger: true
+      - task: rake-test
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source: {repository: ruby, tag: "2.6"}
+          inputs:
+            - name: ci
+            - name: hoe-debugging
+          run:
+            path: ci/concourse/tasks/rake-test/task.sh
+  - name: "ruby-2.3"
+    public: true
+    plan:
+      - get: ci
+      - get: hoe-debugging
+        trigger: true
+      - task: rake-test
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source: {repository: ruby, tag: "2.3"}
+          inputs:
+            - name: ci
+            - name: hoe-debugging
+          run:
+            path: ci/concourse/tasks/rake-test/task.sh
