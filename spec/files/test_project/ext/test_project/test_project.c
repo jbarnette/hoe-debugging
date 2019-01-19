@@ -5,9 +5,10 @@ static VALUE bad_method()
   int *foo = malloc(sizeof(int));
   *foo = 0 ;
   
-  printf("Hoedebuggingtest: running %d\n", *(foo + 512));
-  printf("Hoedebuggingtest: running %d\n", *(foo + 1024));
-  printf("Hoedebuggingtest: running %d\n", *(foo + 2048));
+  for (long int offset = 8 ; offset <= 65536 ; offset = offset * 2 ) {
+    printf("Hoedebuggingtest: running: offset %ld, value %d\n", offset, *(foo + offset));
+    printf("Hoedebuggingtest: running: offset %ld, value %d\n", -offset, *(foo - offset));
+  }
   return Qnil;
 }
 
