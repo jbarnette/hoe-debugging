@@ -2,6 +2,7 @@
 
 * http://github.com/jbarnette/hoe-debugging
 
+[![Concourse CI](https://ci.nokogiri.org/api/v1/teams/flavorjones/pipelines/hoe-debugging/badge)](https://ci.nokogiri.org/teams/flavorjones/pipelines/hoe-debugging)
 
 ## Description
 
